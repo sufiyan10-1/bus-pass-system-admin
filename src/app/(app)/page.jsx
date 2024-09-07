@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+import { Loader2 } from "lucide-react";
 
 const MSRTCServices = () => {
   const [pendingIdentities, setPendingIdentities] = useState([])
-  const [isUserPresent, setIsUserPresent] = useState(false);
+  const [isUserPresent, setIsUserPresent] = useState('');
   const router = useRouter()
  //get current user
  
@@ -19,10 +20,11 @@ const MSRTCServices = () => {
        console.log(res.data);
 
        if (res.data.message === 'User found') {
-         setIsUserPresent(true);
+         setIsUserPresent('User found');
        }
      } catch (error) {
        console.log("error in page", error);
+       setIsUserPresent('User not found');
      }
    };
 
@@ -51,9 +53,13 @@ const MSRTCServices = () => {
       console.error('Error fetching viewAllDetailOfIdentity page:', error)
     }
   }
-
- return (
-    <div className="min-h-screen bg-gray-50 mt-20">
+ const userLoginOrNot = ()=>{
+  if(isUserPresent === ''){
+    return ( <Loader2 className='animate-spin w-24 h-24'/>)
+  }
+  else if(isUserPresent === 'User found'){
+    return(
+      <div className="min-h-screen bg-gray-50 mt-20">
       <div>
       <div className="text-center my-4">
         <h1 className="text-2xl font-bold">IDENTITY REQUEST</h1>
@@ -178,6 +184,20 @@ const MSRTCServices = () => {
       </footer>
        </div> 
     </div>
+    )
+  }
+  else{
+    return(
+      <div>
+        {router.push('/sign-in')}
+      </div>
+    )
+  }
+ }
+ return (
+   <div>
+    {userLoginOrNot()}
+   </div>
   );
 };
 
