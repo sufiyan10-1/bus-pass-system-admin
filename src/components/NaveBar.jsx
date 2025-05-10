@@ -18,14 +18,14 @@ const NavBar = () => {
   const getUserDetail = async ()=>{
    try {
      const res = await axios.get('api/me')
-    console.log(res)
+ 
      setUserData(res.data.data)
     if(res.data.message === 'User found'){
       setIsUserPresent(true)
     }
    
    } catch (error) {
-     console.log("error in page",error)
+     
    }
    }
  
@@ -37,7 +37,7 @@ const NavBar = () => {
 const logOut = async ()=>{
    const response = await axios.get('api/logout');
    if(!response){
-     console.log("logout unsuccessfull", response.message)
+     
      toast({
       title: "Logout Faild !",
       description: response.data.message,
@@ -50,7 +50,7 @@ const logOut = async ()=>{
    })
    window.location.reload();
 }
-console.log(userData)
+ 
   return (
     <div className="bg-slate-800 text-white py-4 shadow-lg fixed top-0 left-0 w-full z-50">
       <div className="relative container mx-auto flex justify-between items-center px-4">

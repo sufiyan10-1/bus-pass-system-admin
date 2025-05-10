@@ -101,7 +101,7 @@ const Page = () => {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(response)
+ 
     if(response.data){
       toast({
         title: "Success !",

@@ -17,7 +17,7 @@ const MSRTCServices = () => {
    const getUserDetail = async () => {
      try {
        const res = await axios.get('api/me');
-       console.log(res.data);
+       
 
        if (res.data.message === 'User found') {
          setIsUserPresent('User found');

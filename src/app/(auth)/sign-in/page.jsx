@@ -22,10 +22,10 @@ function Page() {
     setIsSubmitting(true);
 
     try {
-      console.log(data)
+      
       const response = await axios.post('/api/sign-in',data);
       setIsSubmitting(false);
-      console.log(data.identifier)
+     
       if (response.status === 200) {
         toast({
           title: 'Successful Login',

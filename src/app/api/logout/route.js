@@ -9,7 +9,7 @@ export async function GET() {
                 success: true,
             }
         )
-        response.cookies.set("token", "", 
+        response.cookies.set("adminToken", "", 
         { httpOnly: true, expires: new Date(0) 
         });
         return response;

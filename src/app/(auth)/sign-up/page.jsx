@@ -62,7 +62,7 @@ export default function SignUpForm() {
   }, [username]);
 
   const onSubmit = async (data) => {
-    console.log(data)
+  
     setIsSubmitting(true);
     try {
       //sign up
