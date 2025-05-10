@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken";
 
 export const getDataFromToken = (request) => {
     try {
-        const token = request.cookies.get("token")?.value || '';
-        const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+        const adminToken = request.cookies.get("adminToken")?.value || '';
+        const decodedToken = jwt.verify(adminToken, process.env.TOKEN_SECRET);
         return decodedToken.id;
     } catch (error) {
         throw new Error(error.message);

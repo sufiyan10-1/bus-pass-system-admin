@@ -36,7 +36,7 @@ export async function POST(request) {
         };
 
         // Create token
-        const token = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: '1d' });
+        const adminToken = jwt.sign(tokenData, process.env.TOKEN_SECRET, { expiresIn: '1d' });
 
         // Create a response
         const response = NextResponse.json({
@@ -45,7 +45,7 @@ export async function POST(request) {
         });
 
         // Set the token as a cookie
-        response.cookies.set('token', token, {
+        response.cookies.set('adminToken', adminToken, {
             httpOnly: true,
             sameSite: 'strict',
             path: '/',

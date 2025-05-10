@@ -55,7 +55,7 @@ const MSRTCServices = () => {
   }
  const userLoginOrNot = ()=>{
   if(isUserPresent === ''){
-    return ( <Loader2 className='animate-spin w-24 h-24'/>)
+    return ( <div className="absolute top-1/2 right-1/2"><Loader2 className='animate-spin w-24 h-24'/></div>)
   }
   else if(isUserPresent === 'User found'){
     return(
@@ -81,6 +81,9 @@ const MSRTCServices = () => {
     <div className="font-bold hover:text-blue-500 transition-transform">
       Address
     </div>
+    <div className="font-bold hover:text-blue-500 transition-transform">
+    View
+    </div>
   </section>
 
   {/* Data Section */}
@@ -89,14 +92,14 @@ const MSRTCServices = () => {
       {pendingIdentities.map((pendingIdentity) => (
         <li
           key={pendingIdentity._id}
-          className="flex flex-col md:flex-row md:items-center md:justify-between bg-white p-4 rounded-lg shadow-lg"
+          className="px-14 flex flex-col md:flex-row md:items-center md:justify-between bg-white p-4 rounded-lg shadow-lg"
         >
-          <div className="flex flex-col md:flex-row md:gap-10 gap-2">
+          
             <p className="text-gray-600">{pendingIdentity.IdNumber}</p>
             <p className="font-semibold text-gray-700">{pendingIdentity.studentName}</p>
             <p className="text-gray-600">{pendingIdentity.studentDOB}</p>
             <p className="text-gray-600">{pendingIdentity.studentAddress}</p>
-          </div>
+         
           <button
             className="mt-4 md:mt-0 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
             onClick={(e) => {

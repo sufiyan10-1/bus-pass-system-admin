@@ -1,6 +1,6 @@
 import dbConnect from "@/lib/dbConnect";
 import IdentityModel from "@/models/Identity";
-
+ 
 
 
 export async function POST(request){
@@ -22,8 +22,9 @@ export async function POST(request){
     }
 
     const rejectApplication = await IdentityModel.findByIdAndUpdate(objectId, 
-        {status: `rejected Due to ${rejectReason}`}
-    )
+      { status: `rejected Due to ${rejectReason}. Please make corrections and re-upload your application <a href='/update-identity' style='color:blue; text-decoration:underline;'>from here</a>.` }
+    );
+    
 
     if(!rejectApplication){
         return Response.json({
